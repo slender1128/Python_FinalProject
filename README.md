@@ -10,4 +10,4 @@ We figured that our task was to predict the demand of bikes with all the paramet
 
 ## Conclusion
 
-We obtained a model with 76% of accuracy. This means that 3 predictions out of 4 will be pretty close from the reality. This is not high enough for our model to be reliable. To upgrade it, we could try to add some variables that we removed in the cleaning process. Or we could remove more variables.
+We obtained a model with approximately 80% of accuracy. This is not high enough for our model to be entirely reliable. To upgrade it, we could try to add some variables that we removed in the cleaning process. Or we could remove more variables.
