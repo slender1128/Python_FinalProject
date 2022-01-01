@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<h1>Python Final Project Flask API - Seoul Rented Bikes - By ROUSSELLE Jean-Baptiste and NICOLAS Antonin</h1>
+	<text>Use the sliders to change the different parameters. Push the "Plot" Button to plot the predicted amount of Rented Bike per hour with the actual parameters. It is therefore implied that the parameters are constant during the entire day (which is false).</text>
+</head>
+<body>
+	<h2>Plot</h2>
+	<div id='chart' class='chart'”></div>
+	<text>Temperature = {{temperature}}°C<br>
+	Humidity = {{humidity}}%<br>
+	Visibility (10m) = {{visibility}}<br>
+	Solar Radiation = {{solarRad}}MJ/m²<br>
+	Rainfall = {{rainfall}}mm<br>
+	Snowfall = {{snowfall}}cm<br>
+	Season = {{seasons}}<br>
+	Holiday = {{holiday}}</text>
+	<h2>Parameters</h2>
+	<form method="post" action="/">
+		<div>
+			<label for="temperature">Temperature</label>
+			<input id="temperature" type="range" value={{temperature}} min="-20" step="1" max="50" name="temperature" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{temperature}}</output>
+			<!--input id="amount" type="number" value="0" min="0" max="200" oninput="rangeInput.value=amount.value" name = "amount"/-->
+			<text>°C</text>
+		</div>
+		<div>
+			<label for="humidity">Humidity</label>
+			<input id="humidity" type="range" value={{humidity}} min="0" step="1" max="100" name="humidity" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{humidity}}</output>
+			<text>%</text>
+		</div>
+		<div>
+			<label for="visibility">Visibility (10m)</label>
+			<input id="visibility" type="range" value={{visibility}} min="0" step="1" max="2000" name="visibility" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{visibility}}</output>
+		</div>
+		<div>
+			<label for="solarRad">Solar Radiation</label>
+			<input id="solarRad" type="range" value={{solarRad}} min="0" step="0.1" max="5" name="solarRad" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{solarRad}}</output>
+			<text>MJ/m²</text>
+		</div>
+		<div>
+			<label for="rainfall">Rainfall</label>
+			<input id="rainfall" type="range" value={{rainfall}} min="0" step="1" max="50" name="rainfall" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{rainfall}}</output>
+			<text>mm</text>
+		</div>
+		<div>
+			<label for="snowfall">Snowfall</label>
+			<input id="snowfall" type="range" value={{snowfall}} min="0" step="1" max="10" name="snowfall" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{snowfall}}</output>
+			<text>cm</text>
+		</div>
+		<div>
+			<label for="seasons">Season</label>
+			<input id="seasons" type="range" value={{seasons}} min="0" step="1" max="3" name="seasons" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{seasons}}</output>
+			<text> -- Winter = 0 ; Spring = 1 ; Summer = 2 ; Autumn = 3</text>
+		</div>
+		<div>
+			<label for="holiday">Holiday</label>
+			<input id="holiday" type="range" value={{holiday}} min="0" step="1" max="1" name="holiday" oninput="this.nextElementSibling.value = this.value"/>
+			<output>{{holiday}}</output>
+			<text> -- No = 0 ; Yes = 1</text>
+		</div>
+		<input type="submit" value="Plot" name="plotButton"/>
+	</form>
+</body>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+	var graphs = {{graphJSON | safe}};
+	Plotly.plot('chart',graphs,{});
+</script>
+</html>
